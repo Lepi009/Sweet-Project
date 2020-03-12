@@ -54,6 +54,8 @@ namespace Com.LepiStudios.SweetProject {
 
         private Animator animator;
 
+        private int bananas;
+
         #endregion
 
 
@@ -119,6 +121,12 @@ namespace Com.LepiStudios.SweetProject {
         private void OnDrawGizmosSelected()
         {
             Gizmos.DrawWireSphere(groundChecker.position, radius);            
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.name == "Banana") bananas++;
+            GameObject.Destroy(other.gameObject);
         }
 
     }
