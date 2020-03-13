@@ -10,6 +10,7 @@ public class QuestController : MonoBehaviour
 
     private void Start()
     {
-        currentQuest = firstQuest;
+        currentQuest = new Quest_CollectCoin();
+        currentQuest.Fire();
     }
 }

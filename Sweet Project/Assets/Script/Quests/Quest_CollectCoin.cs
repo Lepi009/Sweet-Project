@@ -13,9 +13,9 @@ public class Quest_CollectCoin : Quest
         Debug.Log("Collect the banana");
     }
 
-    private void Start()
+    public void Finish()
     {
-        banana = GameObject.Find("Banana");
+        Debug.Log("The banana has been collected");
     }
 
     
