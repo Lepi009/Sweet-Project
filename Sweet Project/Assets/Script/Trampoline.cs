@@ -38,6 +38,9 @@ public class Trampoline : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// called by an animation event
+    /// </summary>
     public void AddForce()
     {
         lastCollision.gameObject.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
