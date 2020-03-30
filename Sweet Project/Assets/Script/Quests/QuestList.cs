@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum QuestList
+namespace Com.LepiStudios.myQuestSystem
 {
-    CollectBanana,
-    CollectPPAP
-}
+    ///<summary>The list of all avaible quests</summary>
+    public enum QuestList
+    {
+        CollectBanana,
+        CollectPPAP
+    }
+    
+    ///<summary>the different timings inside an ongoing quest
+    public enum TimeOfQuest
+    {
+        Beginning, 
+        Ending
+    }
 
-public enum TimeOfQuest
-{
-    Beginning, 
-    Ending
 }
