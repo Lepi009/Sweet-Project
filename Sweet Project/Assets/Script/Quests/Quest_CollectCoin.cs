@@ -3,41 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Quest_CollectCoin : Quest_Collect
+namespace Com.LepiStudios.myQuestSystem
 {
-    private GameObject player;
 
-    private Text questText;
-
-    public override void Fire()
+    public class Quest_CollectCoin : Quest_Collect
     {
-        questName = QuestList.CollectBanana;
+        private GameObject player;
 
-        base.Fire();
-        questText = GameObject.FindGameObjectWithTag("QuestText").GetComponent<Text>();
-        questText.text = "Quest: Find the banana and collect it";
-    }
+        private Text questText;
 
-    public override void Update()
-    {
-        Finish();
-    }
-
-    public override void Finish()
-    {
-        base.Finish();
-        questText.text = "You finished the Banana-Quest...\nBut know I need the fruits of the song PPAP";
-
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach(GameObject player in players)
+        public override void Fire()
         {
-            player.GetComponent<QuestController>().NextQuest();
+            questName = QuestList.CollectBanana;
+
+            base.Fire();
+            questText = GameObject.FindGameObjectWithTag("QuestText").GetComponent<Text>();
+            questText.text = "Quest: Find the banana and collect it";
+        }
+
+        public override void Update()
+        {
+            Finish();
+        }
+
+        public override void Finish()
+        {
+            base.Finish();
+            questText.text = "You finished the Banana-Quest...\nBut know I need the fruits of the song PPAP";
+
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            
+            //all players are doing the quests together
+            //that each player has his own quest, you need to have objects only on their game
+            foreach(GameObject player in players)
+            {
+                player.GetComponent<QuestController>().NextQuest();
+            }
         }
     }
-
-    
-
-
-
 }
