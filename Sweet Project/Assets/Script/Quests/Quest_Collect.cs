@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Com.LepiStudios.myQuestSystem { 
 
     /// <summary>
-    /// this abstract class is subclass 
+    /// this abstract class is subclass from Quest and is to organize all quest which task is to collect something
     /// </summary>
     public abstract class Quest_Collect : Quest
     {
