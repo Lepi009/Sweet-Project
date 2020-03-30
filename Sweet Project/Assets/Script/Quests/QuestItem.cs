@@ -9,7 +9,7 @@ namespace Com.LepiStudios.myQuestSystem
     {
         #region Private Serialized Fields
         
-        [Tooltip("Defines if the item is visible and relevant at the beginning or should be enabled when the player starts the refering quest</summary>
+        [Tooltip("Defines if the item is visible and relevant at the beginning or should be enabled when the player starts the refering quest")]
         public bool enabledAtTheBeginning = true;
         
         [Tooltip("The quest, which is important for the item")]
