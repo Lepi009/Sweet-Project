@@ -2,34 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestItem : MonoBehaviour
+namespace Com.LepiStudios.myQuestSystem
 {
-    public bool enabledAtTheBeginning = true;
-
-    public QuestList quest;
-
-    private void Start()
+    ///<summary>component of all items which are relevant for quests</summary>
+    public class QuestItem : MonoBehaviour
     {
-        if (!enabledAtTheBeginning) GetComponent<SpriteRenderer>().enabled = false;
-    }
+        #region Private Serialized Fields
+        
+        [Tooltip("Defines if the item is visible and relevant at the beginning or should be enabled when the player starts the refering quest</summary>
+        public bool enabledAtTheBeginning = true;
+        
+        [Tooltip("The quest, which is important for the item")]
+        public QuestList quest;
+        
+        #endregion
 
-    public void ShowItem()
-    {
-        GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (GetComponent<SpriteRenderer>().enabled == false) return;
-        if(other.gameObject.tag == "Player")
+        #region MonoBehaviour Callbacks
+        
+        private void Start()
         {
-            Quest currentQuest = other.gameObject.GetComponent<QuestController>().currentQuest;
+            if(!enabledAtTheBeginning) SetActiveItem(false);
+        }
 
-            if(currentQuest.questName == quest)
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if(other.gameObject.tag == "Player")
             {
-                currentQuest.Update();
-                Destroy(gameObject);
+                Quest currentQuest = other.gameObject.GetComponent<QuestController>().currentQuest;
+
+                if(currentQuest.questName == quest)
+                {
+                    currentQuest.Update();
+                    Destroy(gameObject);
+                }
             }
         }
+        
+        #endregion
+        
+        #region Public Methods
+        
+        public void ShowItem()
+        {
+            if(!enabledAtTheBeginning) SetActiveItem(true);
+        }
+        
+        #endregion
+        
+        #region Private Methods
+        
+        private void SetActiveItem(bool enable) {
+            GetComponent<SpriteRenderer>().enabled = enable;
+            GetComponent<BoxCollider2D>().enabled = enable;
+        }
+        
+        #endregion
     }
 }
