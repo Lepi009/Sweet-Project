@@ -8,6 +8,13 @@ using Photon.Realtime;
 
 public class ListPlayer : MonoBehaviourPunCallbacks
 {
+    #region Public Fields
+
+    [Tooltip("The text component of the quest describtion")]
+    public Text questDescribtion;
+
+    #endregion
+
     #region Serialized Fields
 
     [Tooltip("The key which the list can be showed")]
@@ -21,6 +28,7 @@ public class ListPlayer : MonoBehaviourPunCallbacks
     [Tooltip("The container for display")]
     [SerializeField]
     private Transform displayContainer;
+
 
     #endregion
 

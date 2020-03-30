@@ -28,6 +28,7 @@ namespace Com.LepiStudios.myQuestSystem
         {
             if(other.gameObject.tag == "Player")
             {
+                if (other.gameObject.GetComponent<QuestController>() == null) return;
                 Quest currentQuest = other.gameObject.GetComponent<QuestController>().currentQuest;
 
                 if(currentQuest.questName == quest)
@@ -35,6 +36,7 @@ namespace Com.LepiStudios.myQuestSystem
                     currentQuest.Update();
                     Destroy(gameObject);
                 }
+
             }
         }
         

@@ -16,9 +16,29 @@ namespace Com.LepiStudios.myQuestSystem
         /// </summary>
         public QuestList questName;
 
+        /// <summary>
+        /// every quest should have a describtion what is the aim and what to do
+        /// </summary>
+        private string myDescribtion;
+
+        public delegate void DescribtionChanged(string newText);
+
+        public event DescribtionChanged OnChangeDescribtion;
+
         #endregion
 
         #region Public Methods
+
+        public string GetDescribtion()
+        {
+            return myDescribtion;
+        }
+
+        public void SetDescribtion(string newText)
+        {
+            myDescribtion = newText;
+            OnChangeDescribtion.Invoke(newText);
+        }
 
         /// <summary>
         /// the fire methods starts the quest and initalize the quest, e.g. spawning items, show something in a UI

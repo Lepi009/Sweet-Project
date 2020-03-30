@@ -8,9 +8,6 @@ namespace Com.LepiStudios.myQuestSystem
 
     public class Quest_CollectPPAP : Quest_Collect
     {
-        ///<summary>var safes the "quest board", which shows the current running quest</summary>
-        private Text questText;
-
         ///<summary>var counts the founded items</summary>
         public int foundItems = 0;
 
@@ -19,8 +16,6 @@ namespace Com.LepiStudios.myQuestSystem
             questName = QuestList.CollectPPAP;
 
             base.Fire();
-
-            questText = GameObject.FindGameObjectWithTag("QuestText").GetComponent<Text>();
 
         }
 
@@ -38,8 +33,7 @@ namespace Com.LepiStudios.myQuestSystem
         public override void Finish()
         {
             base.Finish();
-
-            questText.text = "You finished the PPAP quest...now sing for me\nAnd maybe there is now a way free that was not free yet";
+            this.SetDescribtion("You finished the PPAP quest...now sing for me\nAnd maybe there is now a way free that was not free yet");
         }
     }
 }

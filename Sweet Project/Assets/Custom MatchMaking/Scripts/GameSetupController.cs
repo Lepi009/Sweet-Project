@@ -35,10 +35,13 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
                 CreatePlayer();
 
             cache = FindObjectOfType<EventCache>();
-            EventData[] events = cache.toArray();
-            foreach(EventData e in events) {
-                OnEvent(e);
-                cache.cache.Remove(e);
+            if(cache != null)
+            {
+                EventData[] events = cache.toArray();
+                foreach(EventData e in events) {
+                    OnEvent(e);
+                    cache.cache.Remove(e);
+                }
             }
 		}
 
@@ -66,6 +69,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
 
         public override void OnJoinedRoom()
         {
+            PhotonNetwork.AutomaticallySyncScene = false;
             Debug.Log("Joined room");
             CreatePlayer();
         }

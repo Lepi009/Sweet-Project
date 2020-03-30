@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - QuestText
   - QuestItem
+  - Canvas
+  - Chat
+  - ListOfPlayers
   layers:
   - Default
   - TransparentFX
