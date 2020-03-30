@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestBarricade : MonoBehaviour
+namespace Com.LepiStudios.myQuestSystem
 {
-    [Tooltip("The quest where the barricade should disappear")]
-    [SerializeField] private QuestList quest;
-
-    [Tooltip("If the barricade should disappeat at the beginning or the end of the quest")]
-    [SerializeField] private TimeOfQuest time;
-
-    public void Proof(TimeOfQuest actualTime, QuestList quest)
+    ///<summary>the class is a component for barricades which should disappear after a special quest</summary>
+    public class QuestBarricade : MonoBehaviour
     {
-        Debug.Log(quest);
-        if(actualTime == time && quest == this.quest)
+        [Tooltip("The quest where the barricade should disappear")]
+        [SerializeField] private QuestList quest;
+
+        [Tooltip("At which time of the quest (begin or end) the barricade should disappear")]
+        [SerializeField] private TimeOfQuest time;
+        
+        ///<summary> method proofs if the current quest is the one at which the barrricade should disappear</summary>
+        ///<param name="currentTime">the current time of the quest</param>
+        ///<param quest="currentQuest">the current quest that is running on the player</param>
+        public void Proof(TimeOfQuest currentTime, QuestList currentQuest)
         {
-            SelfDestroy();
+            if(currentTime == this.time && currentQuest == this.quest)
+            {
+                Destroy(gameObject); //destroys the barricade when the quest and it's time matches to the conditions
+            }
         }
-    }
-
-    private void SelfDestroy()
-    {
-        Destroy(gameObject);
     }
 }
