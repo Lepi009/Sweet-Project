@@ -4,14 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
-using Com.LepiStudios.myChatConsole;
+using Com.LepiStudios.ScriptableObjects;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
     public class CustomMMLobbyController : MonoBehaviourPunCallbacks
     {
 
         #region Private Serialization Fields
+        [Tooltip("Automatically scene sync (whenever the master client changes the scene, the others will change too")]
+        [SerializeField] bool automaticSceneSync = true;
+
+        [Tooltip("The event for sending for chats")]
+        [SerializeField] GameEventWithParam eventChat;
+
         [Header("UI GameObjects")]
         [Tooltip("Button used for joining a Lobby")]
         [SerializeField]
@@ -50,19 +56,6 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         ///<summary>list of all current rooms</summary>
         private List<RoomInfo> roomListings;
 
-        /// <summary>the controller of the chat</summary>
-        private GeneralChatController chat;
-
-        #endregion
-
-        #region MonoBehaviour Callbacks
-
-		///<summary> MonoBehaviour method called on GameObject by Unity during initialization phase. </summary>
-		void Start()
-		{
-            chat = GameObject.FindGameObjectWithTag("Chat").GetComponent<GeneralChatController>(); //gets the controller script from the chat	
-		}
-
         #endregion
 
         #region PunCallbacks
@@ -72,7 +65,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         /// </summary>
         public override void OnConnectedToMaster()
         {
-            //PhotonNetwork.AutomaticallySyncScene = true; //whenever masterclient changes the scene, all clients will change too
+            PhotonNetwork.AutomaticallySyncScene = automaticSceneSync; //true: whenever masterclient changes the scene, all clients will change too
             lobbyConnectButton.SetActive(true);
             roomListings = new List<RoomInfo>(); //initalizing roomListing
 
@@ -84,9 +77,10 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
             {
                 PhotonNetwork.NickName = "Player" + Random.Range(0, 1000).ToString();
             }
+
             playerNameInput.text = PhotonNetwork.NickName; //update input field with player name
             playerNameInput.interactable = true;
-            chat.Log("Connected to Lobby");
+            eventChat.Raise(new ChatMessage("Connected to Lobby", ChatMessageTypes.Network));
         }
 
         /// <summary>
@@ -121,7 +115,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         /// <param name="message"></param>
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
-            chat.Log("Tried to create a room but it failed, maybe there is a room existing with the same name");
+            eventChat.Raise(new ChatMessage("Tried to create a room but it failed, maybe there is a room existing with the same name", ChatMessageTypes.Error));
         }
 
         #endregion
@@ -171,7 +165,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         /// </summary>
         public void CreateRoom()
         {
-            chat.Log("Creating room");
+            eventChat.Raise(new ChatMessage("Creating room", ChatMessageTypes.Network));
             if(roomSize <= 0)
             {
                 roomSize = 1;

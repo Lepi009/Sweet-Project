@@ -9,7 +9,8 @@ public class EventCache : MonoBehaviourPun, IOnEventCallback
 {
     public LinkedList<EventData> cache = new LinkedList<EventData>();
 
-    public int eventCacheCount = 0;
+    [Tooltip("Event ids to cache")]
+    [SerializeField] List<int> eventsToCache;
 
     private void Start()
     {
@@ -19,15 +20,12 @@ public class EventCache : MonoBehaviourPun, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-        if(photonEvent.Code == 1)
+        if(eventsToCache.Contains(photonEvent.Code))
         {
             cache.AddLast(photonEvent);
         }
     }
-    private void Update()
-    {
-        eventCacheCount = cache.Count;
-    }
+
 
     public EventData[] toArray()
     {

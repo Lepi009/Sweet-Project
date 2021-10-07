@@ -4,19 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
     /// <summary>
     /// class that is the component of the player button inside the room. You can click on the player to show the profile. this script make this possible
     /// </summary>
 	public class PlayerButton : MonoBehaviour
 	{
-        #region Public Fields
-
-
-
-        #endregion
-
         #region Private Serialization Fields
 
         [Tooltip("The prefab of the player profile")]
@@ -36,6 +30,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         /// </summary>
         public void ShowProfileOnClick()
         {
+            if (profilePrefab == null) return;
             GameObject temp = Instantiate(profilePrefab, GameObject.FindGameObjectWithTag("Canvas").transform);
             PlayerProfile profile = temp.GetComponent<PlayerProfile>();
             profile.SetPlayerProfile(nameDisplay.text);

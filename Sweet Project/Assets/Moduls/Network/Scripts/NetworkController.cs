@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Com.LepiStudios.myChatConsole;
-
+using Com.LepiStudios.ScriptableObjects;
 using Photon.Pun;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
 	public class NetworkController : MonoBehaviourPunCallbacks
 	{
-        private GeneralChatController chat;
 
-		#region MonoBehaviour Callbacks
+        #region Private Serialized Field
 
-		///<summary> MonoBehaviour method called on GameObject by Unity during initialization phase. </summary>
-		void Start()
+        [Tooltip("The event for sending for chats")]
+        [SerializeField] GameEventWithParam eventChat;
+
+        #endregion
+
+        #region MonoBehaviour Callbacks
+
+        ///<summary> MonoBehaviour method called on GameObject by Unity during initialization phase. </summary>
+        void Start()
 		{
-            chat = GameObject.FindGameObjectWithTag("Chat").GetComponent<GeneralChatController>(); //gets the controller script from the chat	
             //easiest way to connect to Photon master servers
             PhotonNetwork.ConnectUsingSettings();
 		}
@@ -30,7 +35,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         /// </summary>
         public override void OnConnectedToMaster()
         {
-            chat.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
+            eventChat.Raise(new ChatMessage("We are now connected to the " + PhotonNetwork.CloudRegion + " server!", ChatMessageTypes.Network));
         }
 
         #endregion

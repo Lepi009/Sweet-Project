@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Com.LepiStudios.ScriptableObjects;
 
 namespace Com.LepiStudios.myChatConsole
 {
@@ -253,6 +254,20 @@ namespace Com.LepiStudios.myChatConsole
             return string.Format("\n[{0}] <color=#{4}> From:{1}  <{3}>\n\t\"{2}\" </color>", System.DateTime.Now.ToString("HH:mm"), transmitter, message, messageType, ColorUtility.ToHtmlStringRGB(colorMessage));
         }
 
+
+        #endregion
+
+        #region Event Callbacks
+
+        public void OnMessageDisplay(GameEventListenerWithParam paramListener)
+        {
+            Object param = (Object)paramListener.parameter;
+            if(param is ChatMessage)
+            {
+                ChatMessage message = param as ChatMessage;
+                
+            }
+        }
 
         #endregion
 

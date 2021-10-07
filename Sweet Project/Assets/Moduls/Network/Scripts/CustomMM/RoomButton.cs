@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
 	public class RoomButton : MonoBehaviourPunCallbacks
 	{

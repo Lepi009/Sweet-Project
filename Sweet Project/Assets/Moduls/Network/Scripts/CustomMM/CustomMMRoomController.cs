@@ -6,7 +6,7 @@ using Photon.Realtime;
 using Photon.Pun;
 using ExitGames.Client.Photon;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
 	public class CustomMMRoomController:MonoBehaviourPunCallbacks, IOnEventCallback
     {
@@ -16,6 +16,11 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         [Tooltip("Scene index for loading multiplayer scene")]
         [SerializeField]
         private int multiplayerSceneIndex;
+
+        [Tooltip("If players can join the room after the game starts, it should be true")]
+        [SerializeField] bool roomOpenAfterStart = false;
+
+        [Header("UI stuff")]
 
         [Tooltip("The lobby panel, displaying the lobby UI")]
         [SerializeField]
@@ -56,9 +61,6 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         #endregion
 
         #region Private Fields
-
-        [Tooltip("If players can join the room after the game starts, it should be true")]
-        private bool roomOpenAfterStart = false;
 
         [Tooltip("Var safes if the game has already started, called by buffered event for players who join later")]
         private bool gameHasStarted = false;
@@ -126,7 +128,7 @@ namespace Com.LepiStudios.TutorialPhotonYoutube {
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.CurrentRoom.IsOpen = roomOpenAfterStart; //comment out if you want to join player after the game start
+                PhotonNetwork.CurrentRoom.IsOpen = roomOpenAfterStart; 
 
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All, CachingOption = EventCaching.RemoveFromRoomCache };
                 SendOptions sendOptions = new SendOptions { Reliability = true };

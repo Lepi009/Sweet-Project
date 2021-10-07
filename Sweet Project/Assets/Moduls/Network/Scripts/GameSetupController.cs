@@ -7,7 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
     /// <summary>
     /// will be added to any multiplayer scene, does care for Instantiation,...

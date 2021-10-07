@@ -391,31 +391,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3995126779163923553}
-        m_MethodName: EndWritting
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3995126779163923553}
-        m_MethodName: OnWritting
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -722,7 +700,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1120,6 +1098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3995126778596496329}
   - component: {fileID: 3995126778596496328}
+  - component: {fileID: 825351725}
   m_Layer: 0
   m_Name: ChatInputController
   m_TagString: Untagged
@@ -1157,6 +1136,28 @@ MonoBehaviour:
   output: {fileID: 3995126777373253343}
   chatController: {fileID: 3995126779163923553}
   chatNetwork: {fileID: 4196604654025566744}
+--- !u!114 &825351725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995126778596496335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3995126778678361822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,8 +1275,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3995126778519290073}
   m_HandleRect: {fileID: 3995126778519290072}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99755937
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1480,7 +1481,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3995126778944818239
 MonoBehaviour:
@@ -1532,6 +1533,7 @@ GameObject:
   - component: {fileID: 3995126779163923554}
   - component: {fileID: 3995126779163923553}
   - component: {fileID: 4196604654025566744}
+  - component: {fileID: 2141051873}
   m_Layer: 0
   m_Name: ChatPrefab
   m_TagString: Chat
@@ -1599,6 +1601,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatController: {fileID: 3995126779163923553}
+--- !u!114 &2141051873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995126779163923552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3995126779222588149
 GameObject:
   m_ObjectHideFlags: 0

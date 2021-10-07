@@ -2301,6 +2301,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 825351725, guid: 0cb28e41463652e4e8274020b3118e56, type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141051873, guid: 0cb28e41463652e4e8274020b3118e56, type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3995126777719702143, guid: 0cb28e41463652e4e8274020b3118e56,
         type: 3}
       propertyPath: m_SizeDelta.y

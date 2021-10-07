@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Com.LepiStudios.myChatConsole;
 
-namespace Com.LepiStudios.TutorialPhotonYoutube {
+namespace Com.LepiStudios.Network {
 
     /// <summary>
     /// class that is the component of the playerprofilePrefab. Sets the player profile texts and actions.
